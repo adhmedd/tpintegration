@@ -1,5 +1,6 @@
 #!/bin/bash
 
+## Variable à remplacer par son ip si besoin
 ipinstance=localhost
 
 # Vérification du droit d'éxécution du script
@@ -18,8 +19,8 @@ apt update && apt full-upgrade -y
 apt install -y openjdk-11-jdk gnupg
 
 # Ajout du dépot de jenkins et de la clé
-wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | apt-key add -
-sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | apt-key add - && wait
+sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list' && wait
 
 # Installation de jenkins
 apt update
